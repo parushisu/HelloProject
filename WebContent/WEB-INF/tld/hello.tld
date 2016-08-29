@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE taglib
+	PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+	"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>Introduction</shortname>
+	<info>JSPカスタムタグ徹底入門</info>
+
+	<tag>
+		<name>HelloTag</name>
+		<tagclass>jp.co.sample.tag.HelloTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>「こんにちは」を出力</info>
+	</tag>
+	<tag>
+		<name>HelloWorldTag</name>
+		<tagclass>jp.co.sample.tag.HelloWorldTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>「Hello World」を出力</info>
+	</tag>
+	<tag>
+		<name>HelloWorldTag2</name>
+		<tagclass>jp.co.sample.tag.HelloWorldTag2</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>message</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

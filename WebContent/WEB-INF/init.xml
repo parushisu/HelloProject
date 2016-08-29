@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>java.util.PropertiesのXML形式設定ファイル</comment>
+	<entry key="db.driver">oracle.jdbc.driver.OracleDriver</entry>
+	<entry key="db.url">jdbc:oracle:thin:@192.168.0.22:1521:xe</entry>
+	<entry key="db.user">pmc_tool</entry>
+	<entry key="db.password">as54gfjo1</entry>
+</properties>
