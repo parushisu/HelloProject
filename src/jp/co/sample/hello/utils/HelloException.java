@@ -1,4 +1,4 @@
-package jp.co.sample.utils;
+package jp.co.sample.hello.utils;
 
 public class HelloException extends Exception {
 

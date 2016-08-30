@@ -13,7 +13,7 @@
 
 	<filter>
 	    <filter-name>HelloFilter</filter-name>
-	    <filter-class>jp.co.sample.servlet.HelloFilter</filter-class>
+	    <filter-class>jp.co.sample.hello.servlet.HelloFilter</filter-class>
 	 </filter>
 
 	<filter-mapping>
@@ -22,18 +22,18 @@
 	</filter-mapping>
 
 	<servlet>
-		<servlet-name>HelloServlet</servlet-name>
-		<servlet-class>jp.co.sample.servlet.HelloServlet</servlet-class>
+		<servlet-name>TestHelloServlet</servlet-name>
+		<servlet-class>jp.co.test.servlet.TestHelloServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>HelloServlet</servlet-name>
-		<url-pattern>/HelloServlet</url-pattern>
+		<servlet-name>TestHelloServlet</servlet-name>
+		<url-pattern>/TestHelloServlet</url-pattern>
 	</servlet-mapping>
 
 	<jsp-config>
 		<taglib>
-			<taglib-uri>http://mycompany.com/my-taglib_1_0</taglib-uri>
+			<taglib-uri>http://jp.co.sample/hello-taglib_1_0</taglib-uri>
 			<taglib-location>/WEB-INF/tld/hello.tld</taglib-location>
 		</taglib>
 		<jsp-property-group>

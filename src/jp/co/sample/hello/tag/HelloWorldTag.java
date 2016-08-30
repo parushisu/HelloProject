@@ -1,4 +1,4 @@
-package jp.co.sample.tag;
+package jp.co.sample.hello.tag;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package jp.co.sample.bean;
+package jp.co.test.bean;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class HelloBean {
 
 	private String errText = null;
 
-	private ArrayList<String[]> outText1 = null;
+	private ArrayList<HelloData> outText1 = null;
 
 	public String getText1() {
 		return text1;
@@ -26,11 +26,11 @@ public class HelloBean {
 		this.errText = errText;
 	}
 
-	public ArrayList<String[]> getOutText1() {
+	public ArrayList<HelloData> getOutText1() {
 		return outText1;
 	}
 
-	public void setOutText1(ArrayList<String[]> outText1) {
+	public void setOutText1(ArrayList<HelloData> outText1) {
 		this.outText1 = outText1;
 	}
 

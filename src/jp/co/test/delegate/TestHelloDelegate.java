@@ -1,16 +1,17 @@
-package jp.co.sample.delegate;
+package jp.co.test.delegate;
 
 import java.util.ArrayList;
 
-import jp.co.sample.bean.HelloBean;
-import jp.co.sample.db.HelloDB;
-import jp.co.sample.utils.HelloUtils;
+import jp.co.sample.hello.db.HelloDB;
+import jp.co.sample.hello.utils.HelloUtils;
+import jp.co.test.bean.HelloBean;
+import jp.co.test.bean.HelloData;
 
-public class HelloDelegate implements HelloDB.MyClassCallbacks {
+public class TestHelloDelegate implements HelloDB.MyClassCallbacks {
 
 	int columnCount = 0;
 //	StringBuffer result = null;
-	ArrayList<String[]> resultList = null;
+	ArrayList<HelloData> resultList = null;
 
 	public void callbackColumnCount(int cnt) {
 		if (resultList == null) {
@@ -18,7 +19,7 @@ public class HelloDelegate implements HelloDB.MyClassCallbacks {
 
 //			result = new StringBuffer();
 
-			resultList = new ArrayList<String[]>();
+			resultList = new ArrayList<HelloData>();
 		}
 	}
 
@@ -32,21 +33,21 @@ public class HelloDelegate implements HelloDB.MyClassCallbacks {
 //    		result.append("\t");
 //    	}
 
-    	String[] sl = null;
+    	HelloData sl = null;
     	if (col == 1) {
-    		sl = new String[columnCount];
+    		sl = new HelloData();
+    		sl.setCarKatasiki(obj.toString());
     		resultList.add(sl);
-    	} else {
+    	} else if (col == 2) {
     		sl = resultList.get(row - 1);
+    		sl.setCarName(obj.toString());
     	}
-
-    	sl[col - 1] = obj.toString();
     }
 
 	public String execute(HelloBean bean, String path) {
 		String ret = null;
 		String text1 = null;
-		ArrayList<String[]> outText1 = null;
+		ArrayList<HelloData> outText1 = null;
 		String errText = null;
 		int row = 0;
 
@@ -64,18 +65,18 @@ public class HelloDelegate implements HelloDB.MyClassCallbacks {
 
 			row = db.select(text1);
 
-			StringBuffer result = new StringBuffer();
-			for (String[] sl : resultList) {
-				int cnt = sl.length;
-		    	for (int i = 0; i < cnt; i++) {
-			    	result.append(sl[i]);
-			    	if (i < (cnt - 1)) {
-			    		result.append("\t");
-			    	} else {
-				    	result.append("\n");
-			    	}
-		    	}
-			}
+//			StringBuffer result = new StringBuffer();
+//			for (String[] sl : resultList) {
+//				int cnt = sl.length;
+//		    	for (int i = 0; i < cnt; i++) {
+//			    	result.append(sl[i]);
+//			    	if (i < (cnt - 1)) {
+//			    		result.append("\t");
+//			    	} else {
+//				    	result.append("\n");
+//			    	}
+//		    	}
+//			}
 			outText1 = resultList;
 //			outText1 = result.toString();
 
@@ -90,9 +91,10 @@ public class HelloDelegate implements HelloDB.MyClassCallbacks {
 			}
 		}
 
-		if (errText != null) {
+//		if (errText != null) {
 			errText = HelloUtils.getSanitizedString(errText);
-		}
+//		}
+		errText = "   TEST    ";	//@@@
 
 		bean.setErrText(errText);
 		bean.setOutText1(outText1);

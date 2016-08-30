@@ -1,50 +1,50 @@
 <jsp:include page="/WEB-INF/jsp/Header.jsp" />
-<%@ taglib uri="http://mycompany.com/my-taglib_1_0" prefix="mytaglib" %>
+<%@ taglib uri="http://jp.co.sample/hello-taglib_1_0" prefix="hello" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="jp.co.sample.utils.HelloUtils" %>
+<%@ page import="jp.co.test.bean.HelloData" %>
+<%@ page import="jp.co.sample.hello.utils.HelloUtils" %>
 
-	<body>
+<script type="text/javascript" src="/HelloProject/js/jquery.min.js"></script>
+
+<jsp:useBean id="HelloBean" class="jp.co.test.bean.HelloBean" scope="request" />
+<jsp:useBean id="errText" class="java.lang.String" scope="request" />
+
+<style type="text/css">
+<!--
+	.error_msg {
+		color:#ff0000;
+		background-color:#ffffff;
+	}
+//-->
+</style>
+<script type="text/javascript">
+<!--
+function onLoad() {
+	var element = document.getElementById("errmsg");
+//	alert(element.innerHTML);
+	element.innerHTML = 'AAA' + jQuery.trim('<%=errText %>') + 'BBB';
+}
+//-->
+</script>
+	<body onload='onLoad();'>
 		<%
-	//		String item = "Hello JSP2!";
-	//	    request.setCharacterEncoding("windows-31j");
-		    String errText = (String)request.getAttribute("errText");
-		    ArrayList<String[]> resultList = (ArrayList<String[]>)request.getAttribute("outText1");
+//		    String errText = (String)request.getAttribute("errText");
+//		    ArrayList<String[]> resultList = (ArrayList<String[]>)request.getAttribute("outText1");
+		    ArrayList<HelloData> resultList = HelloBean.getOutText1();
 		%>
 		<h2>
-		<%--
-			<mytaglib:HelloTag /><br>
-			<mytaglib:HelloWorldTag /><br>
-		 --%>
-			<mytaglib:HelloWorldTag2 message="zaaa">
-				Everyone<br>
-			</mytaglib:HelloWorldTag2>
-
-			<%
-				if (errText != null) {
-					out.println(errText);
-				}
-			%>
-			<%
-				String outText1 = null;
-				if (resultList.size() > 0) {
-					StringBuffer result = new StringBuffer();
-					for (String[] sl : resultList) {
-						int cnt = sl.length;
-				    	for (int i = 0; i < cnt; i++) {
-					    	result.append(sl[i]);
-					    	if (i < (cnt - 1)) {
-					    		result.append("\t");
-					    	} else {
-						    	result.append("\n");
-					    	}
-				    	}
-					}
-					outText1 = result.toString();
-				} else {
-					outText1 = "該当するデータは存在しません。";
-				}
-			%>
-			<%=HelloUtils.getSanitizedString(outText1) %>
+		<hello:test message="errText">
+			<div class="error_msg"><span id='errmsg'></span></div>
+		</hello:test>
 		</h2>
+
+		<table>
+		<hello:forEach var="addr" type="HelloData" items="<%=resultList %>">
+			<tr>
+				<td><%=addr.getCarKatasiki() %></td>
+				<td><%=addr.getCarName() %></td>
+			</tr>
+		</hello:forEach>
+		</table>
 	</body>
-</html>
+<jsp:include page="/WEB-INF/jsp/Footer.jsp" />

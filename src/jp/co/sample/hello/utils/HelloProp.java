@@ -1,4 +1,4 @@
-package jp.co.sample.utils;
+package jp.co.sample.hello.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

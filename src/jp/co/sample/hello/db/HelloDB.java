@@ -1,4 +1,4 @@
-package jp.co.sample.db;
+package jp.co.sample.hello.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import jp.co.sample.utils.HelloException;
-import jp.co.sample.utils.HelloProp;
+import jp.co.sample.hello.utils.HelloException;
+import jp.co.sample.hello.utils.HelloProp;
 
 public class HelloDB {
 

@@ -1,4 +1,4 @@
-package jp.co.sample.tag;
+package jp.co.sample.hello.tag;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;

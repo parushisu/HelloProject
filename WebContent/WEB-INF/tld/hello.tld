@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="Shift_JIS" ?>
-<!DOCTYPE taglib
-	PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
-	"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!DOCTYPE taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+  "http://java.sun.com/j2ee/dtd/web-jsptaglibrary_1_2.dtd">
 
 <taglib>
-	<tlibversion>1.0</tlibversion>
-	<jspversion>1.1</jspversion>
-	<shortname>Introduction</shortname>
-	<info>JSPカスタムタグ徹底入門</info>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<short-name>Introduction</short-name>
+	<description>Hello Framework カスタムタグ</description>
 
 	<tag>
 		<name>HelloTag</name>
-		<tagclass>jp.co.sample.tag.HelloTag</tagclass>
-		<bodycontent>empty</bodycontent>
-		<info>「こんにちは」を出力</info>
+		<tag-class>jp.co.sample.hello.tag.HelloTag</tag-class>
+		<body-content>empty</body-content>
+		<description>「こんにちは」を出力</description>
 	</tag>
 	<tag>
 		<name>HelloWorldTag</name>
-		<tagclass>jp.co.sample.tag.HelloWorldTag</tagclass>
-		<bodycontent>empty</bodycontent>
-		<info>「Hello World」を出力</info>
+		<tag-class>jp.co.sample.hello.tag.HelloWorldTag</tag-class>
+		<body-content>empty</body-content>
+		<description>「Hello World」を出力</description>
 	</tag>
 	<tag>
-		<name>HelloWorldTag2</name>
-		<tagclass>jp.co.sample.tag.HelloWorldTag2</tagclass>
-		<bodycontent>JSP</bodycontent>
+		<name>test</name>
+		<tag-class>jp.co.sample.hello.tag.HelloWorldTag2</tag-class>
+		<body-content>JSP</body-content>
 		<attribute>
 			<name>message</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>forEach</name>
+		<tag-class>jp.co.sample.hello.tag.HelloForEachTag</tag-class>
+		<tei-class>jp.co.sample.hello.tag.HelloForEachTEI</tei-class>
+		<body-content>JSP</body-content>
+		<description>forEach繰り返しタグライブラリ</description>
+		<attribute>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>items</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
 		</attribute>
 	</tag>
 </taglib>

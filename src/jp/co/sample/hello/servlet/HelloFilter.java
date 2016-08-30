@@ -1,4 +1,4 @@
-package jp.co.sample.servlet;
+package jp.co.sample.hello.servlet;
 
 import java.io.IOException;
 
