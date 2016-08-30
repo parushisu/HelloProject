@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class HelloBean {
 
-	private String text1 = null;
+	private String sql = null;
 
 	private String errText = null;
 
 	private ArrayList<HelloData> outText1 = null;
 
-	public String getText1() {
-		return text1;
+	public String getSql() {
+		return sql;
 	}
 
-	public void setText1(String text1) {
-		this.text1 = text1;
+	public void setSql(String sql) {
+		this.sql = sql;
 	}
 
 	public String getErrText() {

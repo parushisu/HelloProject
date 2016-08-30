@@ -56,7 +56,13 @@ abstract public class HelloServlet extends HttpServlet {
 //        }
 		String forward = execGet(request, response, path);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_ROOT + forward + ".jsp");
+		if ("index".equals(forward)) {
+			forward = "/index.jsp";
+		} else {
+			forward = JSP_ROOT + forward + ".jsp";
+		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
 		dispatcher.forward(request, response);
 	}
 

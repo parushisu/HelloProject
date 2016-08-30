@@ -6,4 +6,6 @@
 	<entry key="db.url">jdbc:oracle:thin:@192.168.0.22:1521:xe</entry>
 	<entry key="db.user">pmc_tool</entry>
 	<entry key="db.password">as54gfjo1</entry>
+
+	<entry key="message.basename">jp.co.test.resources.message</entry>
 </properties>

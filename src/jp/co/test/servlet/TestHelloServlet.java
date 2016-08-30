@@ -13,15 +13,21 @@ import jp.co.test.delegate.TestHelloDelegate;
 public class TestHelloServlet extends HelloServlet {
 
 	protected String execGet(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
-		String text1 = request.getParameter("text1");
+		String fn = request.getParameter("fn");
+
+		if ("back".equals(fn)) {
+			return "index";
+		}
+
+		String sql = request.getParameter("sql");
         String forward = null;
 
-        if (text1 == null) {
+        if (sql == null) {
         	forward = "HelloIn";
         } else {
 	        HelloBean bean = new HelloBean();
 
-	        bean.setText1(text1);
+	        bean.setSql(sql);
 
 			TestHelloDelegate hello = new TestHelloDelegate();
 			forward = hello.execute(bean, path);
