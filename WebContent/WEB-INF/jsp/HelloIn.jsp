@@ -1,40 +1,31 @@
-<jsp:include page="/WEB-INF/jsp/Header.jsp" />
 <%@ taglib uri="http://jp.co.sample/hello-taglib_1_0" prefix="hello" %>
-
-<style type="text/css">
-<!--
-//-->
-</style>
-
 <jsp:useBean id="HelloBean" class="jp.co.test.bean.HelloBean" scope="request" />
 
-<body onload="onLoad();">
+<jsp:include page="/WEB-INF/jsp/MainLayout.jsp" >
+<jsp:param name="title" value="入力" />
+<jsp:param name="screenId" value="SCR0002" />
+<jsp:param name="content" >
+<jsp:attribute name="value" >
 	<%
 		String sql = HelloBean.getSql();
-//		String sqlMsg = (sql == null) ? objRb.getString("message.not_exec") : sql;
 		if (sql == null) sql = "";
 	%>
-	<form name="f" method="post" action="./TestHelloServlet">
-		<div class="mainPanel">
-			<div><hello:message key="title.exec_sql" /></div>
-			<div style="color: #ff0000;" id="sqlmsg"><hello:message key="message.not_exec" /></div>
-			<div>
-				<input type="text" name="sql" value="<%=sql %>" size="100" maxlength="100">
-				<input type="button" name="next" value="<hello:message key='button.exec_sql' />" onclick="doNext();">
-			</div>
-			<div style="padding-top:10px;">
-				<input type="button" name="back" value="<hello:message key='button.back_menu' />" onclick="doBack();">
-			</div>
+	<div class="mainPanel">
+		<div><hello:message key="title.exec_sql" /></div>
+		<div style="color: #ff0000;" id="sqlmsg"><hello:message key="message.not_exec" /></div>
+		<div>
+			<input type="text" name="sql" value="<%=sql %>" size="100" maxlength="200">
+			<input type="button" name="next" value="<hello:message key='button.exec_sql' />" onclick="doNext();">
 		</div>
-
-		 <input type="hidden" name="fn" value="">
-	</form>
+		<div style="padding-top:10px;">
+			<input type="button" name="back" value="<hello:message key='button.back_menu' />" onclick="doBack();">
+		</div>
+	</div>
 
 	<script type="text/javascript">
 	<!--
 		function onLoad() {
 			var sqlmsg = document.getElementById("sqlmsg");
-//			alert(sqlmsg.innerHTML);
 		<% if (sql.length() > 0) { %>
 			sqlmsg.innerHTML = '<%=sql %>';
 		<% } %>
@@ -56,6 +47,6 @@
 		}
 	//-->
 	</script>
-
-</body>
-<jsp:include page="/WEB-INF/jsp/Footer.jsp" />
+</jsp:attribute>
+</jsp:param>
+</jsp:include>
