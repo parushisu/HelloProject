@@ -1,5 +1,188 @@
 @CHARSET "UTF-8";
 
+form{ margin:0; }
+button,input,textarea,select{ font-size:9pt; }
+
+/**
+ * 画面共通幅
+ */
+#outFrame{
+	width:100%;
+	height:100%;
+	position:relative;
+	text-align:center;
+}
+
+#header .headline,
+#main{
+	width:970px;
+	position:relative;
+	/* [top&bottom] [right&left] */
+	margin:0px auto;
+}
+#header{ text-align:center; }
+/** 最少の高さ指定 **/
+#main{ height:300px; }
+
+/** 背景 **/
+#header .background{
+	width:100%;
+	height:38px;
+	filter:progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#000020, endColorStr=#0000af);
+	border-bottom:1px solid #ffffff;
+	position:absolute;
+	z-index:-1;
+	top:0px;
+	left:0px;
+}
+/** 内容 **/
+#header .contents{
+	padding:0px 10px;
+	text-align:left;
+}
+/** システム名 **/
+#header .systemName{
+	line-height:38px;
+	font-size:14pt;
+	color:#ffffff;
+	float:left;
+}
+/** 使用者情報 **/
+#header .userInfo{
+	font-size:9pt;
+	color:#ffffff;
+	height:38px;
+	text-align:right;
+	padding-top:3px;
+}
+
+/** 遷移履歴 **/
+#breadCrumbs{
+	padding-top:2px;
+	padding-left:15px;
+	text-align:left;
+	color:#7C7C7C;
+}
+/** 履歴表示 **/
+#breadCrumbs span{
+	padding-left:5px;
+	line-height:20px;
+	font-size:9pt;
+}
+
+/** divインライン表示 **/
+.inlineBlock{
+	width:100%;
+	text-align:left;
+}
+.inlineBlock .block{
+	display:inline;
+	vertical-align:top;
+}
+/** 左半分 **/
+.halfLeft{
+	width:49.9%;
+	padding-right:6px;
+}
+
+/** 内容グループ **/
+.component{
+	text-align:left;
+}
+/** 表示要素タイトル **/
+.component .compoTitle{
+	height:21px;
+	line-height:19px;
+	font-size:10pt;
+	font-weight:normal;
+	margin:2px 0px;
+}
+
+/** タイトル **/
+.compoTitle{
+	background-color:#c0c0c0;
+	border:1px solid #c0c0c0; /* 枠線 */
+	border-top:2px solid #002060; /* 上ライン */
+	border-left:15px solid #002060; /* 左の四角マーク */
+	position:relative;
+}
+/** タイトル内容 **/
+.compoTitle span{
+	height:100%;
+	color:#ffffff;
+	margin:0px;
+	padding-left:14px;
+	position:absolute;
+	left:0px;
+}
+/** 背景 **/
+.compoTitle .background{
+	width:100%;
+	padding:0px;
+	background-color:#666699;
+	filter:Alpha(Style=1,Opacity=100,FinishOpacity=1,StartX=30,FinishX=100);
+	position:static;
+}
+
+/** メニューリスト **/
+.compoMenuList{
+	margin:0px;
+	margin:0px 15px;
+	line-height:25px;
+}
+/** リスト表示メニュー **/
+.compoMenuList .compoMenu{
+	line-height:24px;
+	width:100%;
+	margin-bottom:2px;
+}
+/* 無効 */
+.compoMenu .disabled{
+	cursor:not-allowed;
+}
+
+/** メニュー **/
+.compoMenu{
+	vertical-align:top;
+	padding:0px;
+}
+/* 項目バー */
+.compoMenu a{
+	height:100%;
+	width:100%;
+	color:#000000;
+	background-color:#f2f2f2;
+	border:1px solid #c0c0c0;
+	margin:1px;
+	padding:0px;
+	text-decoration:none;
+	outline:none;
+	cursor:pointer;
+}
+/* マウスオーバー時 */
+.compoMenu a:hover{
+	color:#000000;
+	background-color:#ffffcc;
+}
+/* ヘッダ */
+.compoMenu .head{
+	width:30px;
+	height:100%;
+	text-align:center;
+	vertical-align:top;
+	margin-right:10px;
+	color:#ffffff;
+	background-color:#666699;
+	border-right:1px solid #c0c0c0;
+	display:inline;
+	font-family:"ＭＳ Ｐゴシック";
+}
+/* 内容 */
+.compoMenu .label{
+	height:100%;
+	font-size:12px;
+}
+
 .errorMsg {
 	color:#ff0000;
 	background-color:#ffffff;
@@ -11,8 +194,8 @@
 	color:#000000;
 	background-color:#ffffff;
 	border:1px solid #c0c0c0;
-	margin:10px;
-	padding:10px;
+	margin:20px;
+	padding:20px;
 }
 
 .mainTableHeader {

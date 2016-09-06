@@ -17,6 +17,7 @@ public class TestHelloAction003 extends HelloAction {
 			String sql = request.getParameter("sql");
 	        HelloBean bean = new HelloBean();
 	        bean.setSql(sql);
+	        request.setAttribute("HelloBean", bean);
 			return "HelloIn";
 		} else {
 			return "";

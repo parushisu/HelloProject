@@ -1,15 +1,25 @@
-<%@ taglib uri="http://jp.co.sample/hello-taglib_1_0" prefix="hello" %>
+<jsp:include page="./Header.jsp" >
+	<jsp:param name="title" value="出力" />
+</jsp:include>
+
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="jp.co.test.bean.HelloData" %>
-<%@ page import="jp.co.sample.hello.utils.HelloUtils" %>
-<jsp:useBean id="HelloBean" class="jp.co.test.bean.HelloBean" scope="request" />
-<jsp:useBean id="zerrText" class="java.lang.String" scope="request" />
 
-<jsp:include page="/WEB-INF/jsp/MainLayout.jsp" >
-<jsp:param name="title" value="出力" />
-<jsp:param name="screenId" value="SCR0003" />
-<jsp:param name="content" >
-<jsp:attribute name="value" >
+<jsp:useBean id="HelloBean" class="jp.co.test.bean.HelloBean" scope="request" />
+
+<%@ taglib uri="http://jp.co.sample/hello-taglib_1_0" prefix="hello" %>
+
+<style type="text/css">
+<!--
+.helloDataCol {
+	width:200px;
+}
+//-->
+</style>
+
+<body onload="onLoad();">
+<form name="f" method="post" action="./TestHelloServlet">
+	<input type="hidden" name="screenId" value="SCR0003">
 <%
 	String errText = HelloBean.getErrText();
 	if (errText == null) errText = "";
@@ -17,7 +27,7 @@
 	String sql = HelloBean.getSql();
 	if (sql == null) sql = "";
 
-	ArrayList<HelloData> resultList = HelloBean.getOutText1();
+	ArrayList<HelloData> resultList = HelloBean.getResultList();
 %>
 	<div class="mainPanel">
 		<h2>
@@ -30,7 +40,13 @@
 		<div style="color: #ff0000;" id="sqlmsg"><%=sql %></div>
 		<input type="hidden" name="sql" value="<%=sql %>">
 
-		<table>
+	<% if (resultList.size() > 0) { %>
+		<table border="1">
+			<col class="helloDataCol"><col class="helloDataCol">
+			<tr class="mainTableHeader">
+				<th>型式</th>
+				<th>車名</th>
+			</tr>
 		<hello:forEach var="addr" type="HelloData" items="<%=resultList %>">
 			<tr>
 				<td><%=addr.getCarKatasiki() %></td>
@@ -38,9 +54,10 @@
 			</tr>
 		</hello:forEach>
 		</table>
+	<% } %>
 
 		<div style="padding-top:10px;">
-			<input type="button" name="back" value="<hello:message key='button.back_menu' />" onclick="doBack();">
+			<input type="button" name="back" value="<hello:message key='button.back_input' />" onclick="doBack();">
 		</div>
 	</div>
 
@@ -48,9 +65,7 @@
 	<!--
 		function onLoad() {
 //			var element = document.getElementById("errmsg");
-//			var str = "AAA";
-//			str = str.concat(jQuery.trim('   TEST    '));
-//			str = str.concat('BBB');
+//			var str = "AAA" + jQuery.trim('<%=errText %>') + 'BBB';
 //			element.innerHTML = str;
 		}
 
@@ -59,6 +74,9 @@
 		}
 	//-->
 	</script>
-</jsp:attribute>
-</jsp:param>
-</jsp:include>
+
+	<input type="hidden" name="fn" value="">
+</form>
+</body>
+
+<jsp:include page="./Footer.jsp" />

@@ -1,11 +1,23 @@
-<%@ taglib uri="http://jp.co.sample/hello-taglib_1_0" prefix="hello" %>
+<jsp:include page="./Header.jsp" >
+	<jsp:param name="title" value="入力" />
+</jsp:include>
+
 <jsp:useBean id="HelloBean" class="jp.co.test.bean.HelloBean" scope="request" />
 
-<jsp:include page="/WEB-INF/jsp/MainLayout.jsp" >
-<jsp:param name="title" value="入力" />
-<jsp:param name="screenId" value="SCR0002" />
-<jsp:param name="content" >
-<jsp:attribute name="value" >
+<%@ taglib uri="http://jp.co.sample/hello-taglib_1_0" prefix="hello" %>
+
+<link rel="stylesheet" href="/HelloProject/css/jquery-ui.css" >
+<style type="text/css">
+<!--
+//-->
+</style>
+
+<script type="text/javascript" src="/HelloProject/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/HelloProject/js/jquery.ui.datepicker-ja.min.js"></script>
+
+<body onload="onLoad();">
+<form name="f" method="post" action="./TestHelloServlet">
+	<input type="hidden" name="screenId" value="SCR0002">
 	<%
 		String sql = HelloBean.getSql();
 		if (sql == null) sql = "";
@@ -20,14 +32,28 @@
 		<div style="padding-top:10px;">
 			<input type="button" name="back" value="<hello:message key='button.back_menu' />" onclick="doBack();">
 		</div>
+
+		<div style="padding-top:10px;">
+			カレンダー ： <input type="text" id="datepicker">
+		</div>
 	</div>
 
 	<script type="text/javascript">
 	<!--
+		$(function() {
+			$("#datepicker").datepicker();
+			$("#datepicker").datepicker("option", "showOn", 'button');
+			$("#datepicker").datepicker("option", "buttonImageOnly", true);
+		    $("#datepicker").datepicker("option", "buttonImage", '/HelloProject/img/calendar-icon.png');
+			$("#datepicker").datepicker("option", "dateFormat", 'yy年mm月dd日');
+		});
+
 		function onLoad() {
+			initCss();
+
 			var sqlmsg = document.getElementById("sqlmsg");
 		<% if (sql.length() > 0) { %>
-			sqlmsg.innerHTML = '<%=sql %>';
+			sqlmsg.innerHTML = "<%=sql %>";
 		<% } %>
 		}
 
@@ -47,6 +73,9 @@
 		}
 	//-->
 	</script>
-</jsp:attribute>
-</jsp:param>
-</jsp:include>
+
+	<input type="hidden" name="fn" value="">
+</form>
+</body>
+
+<jsp:include page="./Footer.jsp" />

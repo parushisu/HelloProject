@@ -3,6 +3,7 @@ package jp.co.test.delegate;
 import java.util.ArrayList;
 
 import jp.co.sample.hello.db.HelloDB;
+import jp.co.sample.hello.utils.HelloUtils;
 import jp.co.test.bean.HelloBean;
 import jp.co.test.bean.HelloData;
 
@@ -62,7 +63,7 @@ public class HelloDelegate002 implements HelloDB.MyClassCallbacks {
 			}
 		}
 
-//		errText = HelloUtils.getSanitizedString(errText);
+		errText = HelloUtils.getSanitizedString(errText);
 //		errText = "   TEST    ";	//@@@
 
 		if (outText1 == null) {
@@ -70,7 +71,7 @@ public class HelloDelegate002 implements HelloDB.MyClassCallbacks {
 		}
 
 		bean.setErrText(errText);
-		bean.setOutText1(outText1);
+		bean.setResultList(outText1);
 
 		ret = "HelloOut";
 

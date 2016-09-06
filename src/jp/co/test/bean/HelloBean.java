@@ -8,7 +8,7 @@ public class HelloBean {
 
 	private String errText = null;
 
-	private ArrayList<HelloData> outText1 = null;
+	private ArrayList<HelloData> resultList = null;
 
 	public String getSql() {
 		return sql;
@@ -26,12 +26,12 @@ public class HelloBean {
 		this.errText = errText;
 	}
 
-	public ArrayList<HelloData> getOutText1() {
-		return outText1;
+	public ArrayList<HelloData> getResultList() {
+		return resultList;
 	}
 
-	public void setOutText1(ArrayList<HelloData> outText1) {
-		this.outText1 = outText1;
+	public void setResultList(ArrayList<HelloData> resultList) {
+		this.resultList = resultList;
 	}
 
 }
